@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+psycopg[binary]
+SQLAlchemy
+pydantic
+pydantic-settings
+websockets
+alembic==1.12.0            # optional for migrations
