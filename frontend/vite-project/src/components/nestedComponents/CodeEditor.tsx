@@ -53,7 +53,7 @@ const CodeEditor: React.FC = () => {
   // ------------------------------
   // 2. Monaco Autocomplete AI (onMount)
   // ------------------------------
-  const handleMount: OnMount = (editor, monacoInstance) => {
+  const handleMount: OnMount = (_editor, monacoInstance) => {
     // Dispose previous provider if any (HMR / re-mount safety)
     providerDisposable.current?.dispose();
 
