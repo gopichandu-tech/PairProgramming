@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.services.room_service import create_room
+from  backend.pairBackend.app.services.room_service import create_room
 
 router = APIRouter(prefix="/rooms", tags=["Rooms"])
 

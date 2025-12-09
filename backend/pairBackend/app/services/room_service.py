@@ -1,6 +1,6 @@
 import uuid
-from app.models import rooms
-from app.database import database
+from  backend.pairBackend.app.models import rooms
+from  backend.pairBackend.app.database import database
 
 async def create_room() -> str:
     room_id = uuid.uuid4().hex[:8]

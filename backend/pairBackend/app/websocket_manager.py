@@ -1,5 +1,5 @@
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
-from app.services.room_service import get_room_code, update_room_code
+from  backend.pairBackend.app.services.room_service import get_room_code, update_room_code
 
 router = APIRouter(tags=["WebSocket"])
 connections = {}  # room_id → list of WebSocket connections

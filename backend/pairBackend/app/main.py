@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import rooms, autocomplete
-from app.websocket_manager import router as ws_router
-from app.database import database, engine, metadata
+from  backend.pairBackend.app.routers import rooms, autocomplete
+from  backend.pairBackend.app.websocket_manager import router as ws_router
+from  backend.pairBackend.app.database import database, engine, metadata
 
 app = FastAPI()
 
