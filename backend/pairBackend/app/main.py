@@ -20,18 +20,19 @@ app.include_router(rooms.router)
 app.include_router(autocomplete.router)
 app.include_router(ws_router)
 
-# ---------- FIXED STARTUP ----------
+# ---------- FIXED STARTUP (ASYNC SAFE) ----------
 @app.on_event("startup")
 async def startup():
-    # Create tables if not exist
-    metadata.create_all(engine)
-    # Connect to database
+    async with engine.begin() as conn:
+        await conn.run_sync(metadata.create_all)
+
     await database.connect()
 
 # ---------- SHUTDOWN ----------
 @app.on_event("shutdown")
 async def shutdown():
     await database.disconnect()
+
 
 @app.get("/")
 def home():
