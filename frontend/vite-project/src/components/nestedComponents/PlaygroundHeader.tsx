@@ -25,8 +25,8 @@ const PlaygroundHeader = () => {
       localStorage.getItem("username")) ||
     "Unknown";
 
-   const WS_URL = import.meta.env.VITE_WS_URL || "ws://localhost:8000";
-    //const WS_URL ="wss://pairprogramming-4ptc.onrender.com";
+   //const WS_URL = import.meta.env.VITE_WS_URL || "ws://localhost:8000";
+  const WS_URL ="wss://pairprogramming-4ptc.onrender.com";
 
   
   useEffect(() => {
