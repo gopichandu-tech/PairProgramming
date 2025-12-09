@@ -11,7 +11,9 @@ const CodeEditor: React.FC = () => {
   const skipNext = useRef<boolean>(false);
   const providerDisposable = useRef<monacoAPI.IDisposable | null>(null);
  //const WS_URL = "wss://pairprogramming-4ptc.onrender.com";
+ //const AUTO_URL =  "https://pairprogramming-4ptc.onrender.com/autocomplete"
  const WS_URL = import.meta.env.VITE_WS_URL || "ws://localhost:8000";
+ const AUTO_URL = import.meta.env.VITE_AUTO_URL || "ws://localhost:8000";
 
   // ------------------------------
   // 1. WebSocket Sync
@@ -71,7 +73,7 @@ const CodeEditor: React.FC = () => {
             const currentCode = model.getValue();
             const cursorPosition = model.getOffsetAt(position);
 
-            const res = await fetch("http://localhost:8000/autocomplete", {
+            const res = await fetch(`${AUTO_URL}`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
