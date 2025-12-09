@@ -10,8 +10,8 @@ const CodeEditor: React.FC = () => {
   const ws = useRef<WebSocket | null>(null);
   const skipNext = useRef<boolean>(false);
   const providerDisposable = useRef<monacoAPI.IDisposable | null>(null);
- //const WS_URL = "wss://pairprogramming-4ptc.onrender.com";
- //const AUTO_URL =  "https://pairprogramming-4ptc.onrender.com/autocomplete"
+//  const WS_URL = "wss://pairprogramming-4ptc.onrender.com";
+//  const AUTO_URL =  "https://pairprogramming-4ptc.onrender.com/autocomplete"
  const WS_URL = import.meta.env.VITE_WS_URL || "ws://localhost:8000";
  const AUTO_URL = import.meta.env.VITE_AUTO_URL || "ws://localhost:8000";
 
@@ -23,16 +23,38 @@ const CodeEditor: React.FC = () => {
 
     ws.current = new WebSocket(`${WS_URL}/ws/${roomId}`);
 
+    // ws.current.onmessage = (event: MessageEvent) => {
+    //   skipNext.current = true;
+    //   setCode(event.data);
+    // };
+
     ws.current.onmessage = (event: MessageEvent) => {
-      skipNext.current = true;
-      setCode(event.data);
+      try {
+        const msg = JSON.parse(event.data);
+
+        // Ignore system messages like {"type":"join"}
+        if (msg.type && msg.type !== "code") {
+          return;
+        }
+
+        // If your backend ever sends { type: "code", content: "..." }
+        if (msg.type === "code" && msg.content) {
+          skipNext.current = true;
+          setCode(msg.content);
+          return;
+        }
+      } catch {
+        // Not JSON → treat as raw code (normal behavior)
+        skipNext.current = true;
+        setCode(event.data);
+      }
     };
 
     // safe onopen send example (if needed)
-    ws.current.onopen = () => {
-      // optional: announce presence or request current code
-      // ws.current?.send(JSON.stringify({ type: "request-current-code" }));
-    };
+    // ws.current.onopen = () => {
+    //   // optional: announce presence or request current code
+    //   // ws.current?.send(JSON.stringify({ type: "request-current-code" }));
+    // };
 
     return () => {
       try {
