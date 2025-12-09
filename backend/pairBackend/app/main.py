@@ -1,23 +1,26 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from  backend.pairBackend.app.routers import rooms, autocomplete
-from  backend.pairBackend.app.websocket_manager import router as ws_router
-from  backend.pairBackend.app.database import database, engine, metadata
+from backend.pairBackend.app.routers import rooms, autocomplete
+from backend.pairBackend.app.websocket_manager import router as ws_router
+from backend.pairBackend.app.database import database, engine, metadata
 
 app = FastAPI()
 
-# CORS
+# --------------------------- CORS FIX ---------------------------
+# Allows:
+# - localhost
+# - ANY Vercel deployment (normal + preview builds)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:5173",
-        "https://pair-programming-pxank74oq-gopichandutechs-projects.vercel.app",
-        "https://pair-programming.vercel.app",
+        "http://localhost:5173"
     ],
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+# -----------------------------------------------------------------
 
 # Routers
 app.include_router(rooms.router)
