@@ -6,7 +6,7 @@ import os
 # Read environment variable or use local DB (password URL encoded)
 db_url = os.getenv(
     "DATABASE_URL",
-    "postgresql://postgres_ndan_user:sa5jjhUQ1gxzDiqB05IeWOPso0wq4yem@dpg-d4rt0pje5dus73arrqd0-a/postgres_ndan"
+    "postgresql+asyncpg://postgres_ndan_user:sa5jjhUQ1gxzDiqB05IeWOPso0wq4yem@dpg-d4rt0pje5dus73arrqd0-a/postgres_ndan"
 )
 
 # Convert "postgres://" to async-compatible
