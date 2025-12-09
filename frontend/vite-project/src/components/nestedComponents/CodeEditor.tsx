@@ -10,6 +10,8 @@ const CodeEditor: React.FC = () => {
   const ws = useRef<WebSocket | null>(null);
   const skipNext = useRef<boolean>(false);
   const providerDisposable = useRef<monacoAPI.IDisposable | null>(null);
+  // const WS_URL = "wss://pairprogramming-4ptc.onrender.com";
+  const WS_URL = import.meta.env.WS_URL || "ws://localhost:8000";
 
   // ------------------------------
   // 1. WebSocket Sync
@@ -17,7 +19,7 @@ const CodeEditor: React.FC = () => {
   useEffect(() => {
     if (!roomId) return;
 
-    ws.current = new WebSocket(`ws://localhost:8000/ws/${roomId}`);
+    ws.current = new WebSocket(`${WS_URL}/ws/${roomId}`);
 
     ws.current.onmessage = (event: MessageEvent) => {
       skipNext.current = true;
