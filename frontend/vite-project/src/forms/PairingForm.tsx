@@ -5,8 +5,11 @@ const PairingForm = () => {
   const [roomId, setRoomId] = useState("");
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
+
   const createRoom = async () => {
-    const res = await fetch("http://localhost:8000/rooms", {
+    const res = await fetch(`${API_URL}/rooms`, {
       method: "POST",
     });
 

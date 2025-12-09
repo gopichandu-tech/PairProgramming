@@ -25,10 +25,13 @@ const PlaygroundHeader = () => {
       localStorage.getItem("username")) ||
     "Unknown";
 
+  
   useEffect(() => {
+    const WS_URL = import.meta.env.VITE_WS_URL || "ws://localhost:8000";
     if (!roomId) return;
 
-    ws.current = new WebSocket(`ws://localhost:8000/room/${roomId}`);
+    // ws.current = new WebSocket(`ws://localhost:8000/room/${roomId}`);
+     ws.current = new WebSocket(`${WS_URL}/ws/${roomId}`);
 
     ws.current.onopen = () => {
       const joinMsg: WSMessage = {
