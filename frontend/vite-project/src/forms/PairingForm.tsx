@@ -1,9 +1,9 @@
-import React,{useState} from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import {useState} from 'react'
+import { Link} from 'react-router-dom'
 
 const PairingForm = () => {
   const [roomId, setRoomId] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
   const API_URL = "https://pairprogramming-4ptc.onrender.com";
@@ -20,13 +20,13 @@ const PairingForm = () => {
     setRoomId(data.roomId);
   };
 
-  const joinRoom = () => {
-    if (!roomId.trim()) {
-      alert("Please enter or generate a room ID");
-      return;
-    }
-    navigate(`/playground/${roomId}`);
-  };
+  // const joinRoom = () => {
+  //   if (!roomId.trim()) {
+  //     alert("Please enter or generate a room ID");
+  //     return;
+  //   }
+  //   navigate(`/playground/${roomId}`);
+  // };
   return (
     <>
         <div className='flex flex-col md:w-[50%] w-[100%] px-[24px] md:px-[0px] gap-[12px] my-[24px]'>

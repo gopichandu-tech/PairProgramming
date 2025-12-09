@@ -1,4 +1,3 @@
-import React from 'react'
 import StartingCards from '@/components/StartingCards';
 import PairingForm from '@/forms/PairingForm';
 

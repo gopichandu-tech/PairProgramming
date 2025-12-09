@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Users, LogOut, Copy } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+import { LogOut, Copy } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 
 interface User {

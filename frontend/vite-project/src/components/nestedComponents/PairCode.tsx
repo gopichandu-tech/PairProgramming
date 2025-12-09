@@ -1,5 +1,4 @@
-import React from 'react'
-import { CodeXml, Users, Zap } from "lucide-react";
+import { CodeXml} from "lucide-react";
 
 const PairCode = () => {
   return (

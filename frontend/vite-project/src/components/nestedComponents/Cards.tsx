@@ -1,5 +1,4 @@
 import { CodeXml, Users, Zap } from "lucide-react";
-import React from 'react'
 
 const Cards = () => {
     const properties = [
