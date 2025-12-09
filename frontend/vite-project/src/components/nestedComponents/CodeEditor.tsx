@@ -11,7 +11,7 @@ const CodeEditor: React.FC = () => {
   const skipNext = useRef<boolean>(false);
   const providerDisposable = useRef<monacoAPI.IDisposable | null>(null);
   // const WS_URL = "wss://pairprogramming-4ptc.onrender.com";
-  const WS_URL = import.meta.env.WS_URL || "ws://localhost:8000";
+  const WS_URL = import.meta.env.VITE_WS_URL || "ws://localhost:8000";
 
   // ------------------------------
   // 1. WebSocket Sync
