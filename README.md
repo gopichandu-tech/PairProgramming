@@ -4,8 +4,8 @@ A real-time collaborative Python code editor built using React + Monaco Editor o
 Multiple users can join the same room and write/edit Python code together with instant synchronization.
 
 ## 🌐 Live Demo
-#### Frontend URL : [Frontend Demo](https://pair-programming-phi.vercel.app/)
-#### Backend URL  : [Backend Demo](https://pairprogramming-4ptc.onrender.com/docs)
+#### Frontend URL : [Frontend Demo](https://frontend-conversational-appointment-cz7mrl05d.vercel.app/)
+#### Backend URL  : [Backend Demo](https://backend-conversational-appointment.onrender.com/docs)
 
 ## 📸 Walkthrough
 🧑‍💻 Home Page — Generate a Room ID
